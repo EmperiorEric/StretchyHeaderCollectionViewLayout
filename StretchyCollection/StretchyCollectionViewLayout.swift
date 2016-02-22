@@ -50,9 +50,33 @@ class StretchyCollectionViewLayout: UICollectionViewLayout {
         }
     }
     
+    override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
+        return true
+    }
+    
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         let visibleAttributes = attributes.filter { attribute -> Bool in
             return rect.contains(attribute.frame) || rect.intersects(attribute.frame)
+        }
+        
+        // Check for our Stretchy Header
+        // We want to find a collectionHeader and stretch it while scrolling.
+        // But first lets make sure we've scrolled far enough.
+        let offset = collectionView?.contentOffset ?? CGPoint.zero
+        let minY = -sectionInset.top
+        if offset.y < minY {
+            let extraOffset = fabs(offset.y - minY)
+            
+            // Find our collectionHeader and stretch it while scrolling.
+            let stretchyHeader = visibleAttributes.filter { attribute -> Bool in
+                return attribute.representedElementKind == StretchyCollectionHeaderKind
+            }.first
+            
+            if let collectionHeader = stretchyHeader {
+                let headerSize = collectionHeader.frame.size
+                collectionHeader.frame.size.height = max(minY, headerSize.height + extraOffset)
+                collectionHeader.frame.origin.y = collectionHeader.frame.origin.y - extraOffset
+            }
         }
         
         return visibleAttributes
