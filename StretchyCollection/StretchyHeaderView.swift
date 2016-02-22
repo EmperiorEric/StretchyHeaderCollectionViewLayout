@@ -40,6 +40,7 @@ class StretchyHeaderView: UICollectionReusableView {
     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .ScaleAspectFill
         return imageView
     }()
 }
