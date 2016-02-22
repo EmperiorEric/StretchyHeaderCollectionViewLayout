@@ -8,6 +8,8 @@
 
 import UIKit
 
+let StretchyCollectionHeaderKind = "StretchyCollectionHeaderKind"
+
 class StretchyCollectionViewLayout: UICollectionViewLayout {
     
     let startingHeaderHeight: CGFloat = 128.0
@@ -41,6 +43,11 @@ class StretchyCollectionViewLayout: UICollectionViewLayout {
                 }
             }
         }
+        
+        let headerIndexPath = NSIndexPath(forItem: 0, inSection: 0)
+        if let headerAttribute = layoutAttributesForSupplementaryViewOfKind(StretchyCollectionHeaderKind, atIndexPath: headerIndexPath) {
+            attributes.append(headerAttribute)
+        }
     }
     
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
@@ -58,7 +65,7 @@ class StretchyCollectionViewLayout: UICollectionViewLayout {
 
         let attribute = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
         
-        var sectionOriginY = sectionInset.top
+        var sectionOriginY = startingHeaderHeight + sectionInset.top
         
         if indexPath.section > 0 {
             let previousSection = indexPath.section - 1
@@ -71,6 +78,16 @@ class StretchyCollectionViewLayout: UICollectionViewLayout {
         
         attribute.frame = CGRect(x: sectionInset.left, y: itemOriginY, width: itemSize.width, height: itemSize.height)
         
+        return attribute
+    }
+    
+    override func layoutAttributesForSupplementaryViewOfKind(elementKind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+        guard let collectionView = collectionView else {
+            return nil
+        }
+        
+        let attribute = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: StretchyCollectionHeaderKind, withIndexPath: indexPath)
+        attribute.frame = CGRect(x: 0, y: 0, width: collectionView.frame.width, height: startingHeaderHeight)
         return attribute
     }
     

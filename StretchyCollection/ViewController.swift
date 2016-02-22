@@ -44,6 +44,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     //==========================================================================
     
     private let cellIdentifier = "UniqueCellIdentifier"
+    private let headerIdentifier = "UniqueHeaderIdentifier"
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 4
@@ -57,6 +58,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath)
         cell.backgroundColor = UIColor.whiteColor()
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        let view = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: headerIdentifier, forIndexPath: indexPath) as! StretchyHeaderView
+        view.imageView.image = UIImage(named: "Photo")
+        return view
     }
     
     //==========================================================================
@@ -83,6 +90,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         collectionView.backgroundColor = UIColor.lightGrayColor()
         
         collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: self.cellIdentifier)
+        collectionView.registerClass(StretchyHeaderView.self, forSupplementaryViewOfKind: StretchyCollectionHeaderKind, withReuseIdentifier: self.headerIdentifier)
         
         return collectionView
     }()

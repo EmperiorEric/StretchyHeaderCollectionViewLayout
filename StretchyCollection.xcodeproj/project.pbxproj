@@ -12,6 +12,7 @@
 		EF9739FA1C4F0C15009E9CE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF9739F91C4F0C15009E9CE9 /* Assets.xcassets */; };
 		EF9739FD1C4F0C15009E9CE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF9739FB1C4F0C15009E9CE9 /* LaunchScreen.storyboard */; };
 		EF973A051C4F0DA3009E9CE9 /* StretchyCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF973A041C4F0DA3009E9CE9 /* StretchyCollectionViewLayout.swift */; };
+		EF973A071C4F110D009E9CE9 /* StretchyHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF973A061C4F110D009E9CE9 /* StretchyHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		EF9739FC1C4F0C15009E9CE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EF9739FE1C4F0C15009E9CE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF973A041C4F0DA3009E9CE9 /* StretchyCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchyCollectionViewLayout.swift; sourceTree = "<group>"; };
+		EF973A061C4F110D009E9CE9 /* StretchyHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchyHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				EF9739F21C4F0C15009E9CE9 /* AppDelegate.swift */,
 				EF9739F41C4F0C15009E9CE9 /* ViewController.swift */,
+				EF973A061C4F110D009E9CE9 /* StretchyHeaderView.swift */,
 				EF973A041C4F0DA3009E9CE9 /* StretchyCollectionViewLayout.swift */,
 				EF9739F91C4F0C15009E9CE9 /* Assets.xcassets */,
 				EF9739FB1C4F0C15009E9CE9 /* LaunchScreen.storyboard */,
@@ -135,6 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF9739F51C4F0C15009E9CE9 /* ViewController.swift in Sources */,
+				EF973A071C4F110D009E9CE9 /* StretchyHeaderView.swift in Sources */,
 				EF973A051C4F0DA3009E9CE9 /* StretchyCollectionViewLayout.swift in Sources */,
 				EF9739F31C4F0C15009E9CE9 /* AppDelegate.swift in Sources */,
 			);
@@ -276,7 +280,6 @@
 				EF973A031C4F0C15009E9CE9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
